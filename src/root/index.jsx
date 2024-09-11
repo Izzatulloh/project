@@ -1,9 +1,9 @@
 import { Container } from "./style"
 
-const Sidebar = () => {
+const Root = () => {
     return (
-        <Container>Sidebar</Container>
+        <Container>Root</Container>
     )
 }
 
-export default Sidebar
+export default Root
