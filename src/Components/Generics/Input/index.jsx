@@ -1,9 +1,15 @@
-import { Container } from './style'
+import { Container, Input } from './style'
 
-const Input = () => {
+const GenericInput = (props) => {
+    const { iconleft, iconright } = props
+
     return (
-        <Container>Input</Container>
+        <Container {...props}>
+            {iconleft && iconleft}
+            <Input {...props} />
+            {iconright && iconright}
+        </Container>
     )
 }
 
-export default Input
+export default GenericInput

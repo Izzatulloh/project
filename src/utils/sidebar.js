@@ -6,10 +6,10 @@ import Groups from "../assets/icons/group.svg?react";
 import Course from "../assets/icons/course.svg?react";
 import HR from "../assets/icons/hr.svg?react";
 import Settings from "../assets/icons/setting.svg?react";
+import Generics from "../Components/Generics/Generics";
 // Components
-// import { AnalitikaView } from "../view/AnalitikaView";
+import {AnalitikaView}  from "../view/AnalitikaView";
 // import FirstClassView from "../view/Lids/First";
-import Generics from "../view/Generics";
 // import AllLidsView from "../view/Lids/All";
 // import NewStudentView from "../view/Lids/New";
 // import { ArchiveStudentsView } from "../view/Students/Archive.jsx";
@@ -31,7 +31,7 @@ const sidebar = [
     path: "/analitika",
     icon: Analitika,
     isPrivate: true,
-    element: Generics,
+    element: AnalitikaView,
     role: ["admin", "manager"],
   },
   {
@@ -59,6 +59,7 @@ const sidebar = [
         path: "/lidlar/first-class",
         isPrivate: true,
         element: Generics,
+        
         role: ["admin", "manager"],
       },
       {
@@ -67,7 +68,7 @@ const sidebar = [
         path: "/lidlar/new-students",
         parentID: 2,
         isPrivate: true,
-        element: NewStudentView,
+        element: Generics,
         role: ["admin", "manager"],
       },
     ],
