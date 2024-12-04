@@ -1,5 +1,7 @@
 import styled from "styled-components";
 const Container = styled.div`
+display: inherit;
+align-items: inherit;
 font-family: "Montserrat";
 font-size: 16px;
 font-weight: 500;

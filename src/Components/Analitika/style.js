@@ -26,8 +26,9 @@ const getColor = (title) => {
 }
 
 export const Container = styled.div`
-padding: 20px;
+padding: 20px 24px;
 border-radius: 8px;
+
 `
 const Wrapper = styled.div`
 display: flex;
@@ -43,6 +44,7 @@ padding: 24px;
 padding-bottom: 16px;
 gap: 16px;
 border: 1px solid #F0F0F0;
+border-radius: 8px;
 background-color: ${({ title }) => getColor(title)?.ternarny};
 
 `
@@ -61,6 +63,9 @@ const Section = styled(Wrapper)`
         path{
             fill: #fff;
         }
+    }
+    .subIcon{
+        margin-right: 16px;
     }
 `
 const Plus = styled.div`
@@ -93,3 +98,9 @@ height: 24px;
 margin-right: 13px;
 `
 export { Wrapper, Card, Section, Plus, Counter ,Arrow}
+export const SubCard = styled(Card)`
+    padding-bottom: 24px;
+    border-radius: 8px;
+    border: 1px solid rgb(240,240,240);
+
+`
