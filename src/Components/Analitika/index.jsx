@@ -1,5 +1,5 @@
 import React from 'react'
-import { Arrow, Card, Container, Counter, Plus, Section, Wrapper } from './style'
+import { Arrow, Card, Container, Counter, Plus, Section, SubCard, Wrapper } from './style'
 import Title from '../Generics/Title'
 import Subtitle from '../Generics/Subtitle'
 import { media, privateData } from '../../utils/analitics'
@@ -41,22 +41,24 @@ const Analitika = () => {
           media.map(value => {
             const { icon: Icon } = value
             return (
-              <Card key={value.id} title={value.title}>
+              <SubCard key={value.id} title={value.title}>
                 {/* Top */}
                 <Section title={value.title}>
-                  <Title >
-                    <Icon className="icon" />
+                  <Subtitle >
+                    <Icon className="subIcon" />
                     {value.title}
-                  </Title>
+                  </Subtitle>
                   <Plus title={value.title} />
                 </Section>
                 {/* Bottom */}
                 <Section title={value.title}>
-                  <Title >
-                    <Arrow  /> <Counter >{value.count}</Counter>
+                  <Title color={'#52C41A'} >
+                    <Arrow  /> 
+                    22%
                   </Title>
+                    <Counter >{value.count}K</Counter>
                 </Section>
-              </Card>
+              </SubCard>
             )
           })
         }
