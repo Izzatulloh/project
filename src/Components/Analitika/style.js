@@ -97,10 +97,19 @@ width: 24px;
 height: 24px;
 margin-right: 13px;
 `
-export { Wrapper, Card, Section, Plus, Counter ,Arrow}
+export { Wrapper, Card, Section, Plus, Counter, Arrow }
 export const SubCard = styled(Card)`
     padding-bottom: 24px;
     border-radius: 8px;
     border: 1px solid rgb(240,240,240);
 
 `
+export const FooterWrapper = styled.div`
+    display: flex;
+    flex: 1;
+    gap: 17px;
+`
+FooterWrapper.Email = styled.div`
+flex:2;`
+FooterWrapper.Moliya = styled.div`
+flex:1;`

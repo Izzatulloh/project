@@ -32,7 +32,7 @@ const Time = () => {
   return (
     <TimeDiv>
       <Timer>{date.hour}:{date.minute}</Timer>
-      <Timer status="true">PM</Timer>
+      <Timer status="true">{date.status}</Timer>
     </TimeDiv>
   )
 }
