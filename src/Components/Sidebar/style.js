@@ -25,8 +25,12 @@ const Side = styled.div`
 `;
 const Body = styled.div`
     flex: 1;
+    overflow: hidden;
+    min-width: calc(1440px);
     overflow-y: scroll;
+    overflow-x: scroll;
     height: 100vh;
+
 `;
 const Wrapper = styled.div`
    margin: 16px;
@@ -100,6 +104,10 @@ const MenuItem = styled(NavLink)`
     display: flex;
     text-decoration: none;
     color: var(--primaryColor);
+    background-color: ${({ active }) =>
+        active === "true" && `rgba(248, 250, 252, 1)`};
+  color: ${({ active }) =>
+        active === "true" ? `var(--activeColor)` : `var(--primaryColor)`};
 `
 MenuItem.Title = styled.div`
 flex: 1;
@@ -111,7 +119,7 @@ transition: 300ms;
 display: flex;
 align-items: center;
 & path{
-        fill: var(--secondaryColor);
+    fill: ${({ active }) => active === "true" && " var(--activeColor)"};
         transition: 300ms;
     }
 &:hover{
