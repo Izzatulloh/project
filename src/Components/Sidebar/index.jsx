@@ -11,20 +11,27 @@ const Sidebar = () => {
     const onClickLogo = () => {
         navigate('/')
     }
-    const onLogOut = ()=>{
+    const onLogOut = () => {
         navigate('/login')
     }
-    const onClickParent = (e, { id, children, path }) => {
+    const onClickParent = (e, { id, children, path,title }) => {
+        e.preventDefault()
+
         if (open.includes(id)) {
             let data = open.filter(value => id !== value)
+            localStorage.setItem('open', JSON.stringify(data))
             setOpen(data)
         } else {
+            localStorage.setItem('open', JSON.stringify([...open, id]))
             setOpen([...open, id])
         }
         if (!children) {
-            e.preventDefault()
-            navigate(path)
+            navigate(path,{ state: {parent:title} })
         }
+    }
+    const onClickChild = (e,child,parent,path ) => {
+        e.preventDefault()
+        navigate(path,{ state: {parent,child} })
     }
     return (
         <Container>
@@ -33,34 +40,40 @@ const Sidebar = () => {
                 <Profile />
                 <Menu>
                     {sidebar.map((parent) => {
-                        if (parent.icon) {
-                            const { icon: Icon } = parent
-                            return !parent.hidden ? (
-                                <React.Fragment key={parent.id}>
-                                    <MenuItem
-                                        onClick={(e) => onClickParent(e, parent)}
-                                    >
-                                        <MenuItem.Title>
-                                            <Icon className="icon" />
-                                            {parent.title}
-                                            {parent?.children ? <Arrow active={open.includes(parent.id).toString()} /> : ''}
-                                        </MenuItem.Title>
-                                    </MenuItem>
-                                    <ChildWrapper active={open.includes(parent.id).toString()}>
-                                        {
-                                            parent?.children?.map(child => (
-                                                <MenuItem key={child.id} to={child.path}>
-                                                    <MenuItem.Title>
-                                                        {child.title}
-                                                    </MenuItem.Title>
-                                                </MenuItem>
-                                            ))
-                                        }
-                                    </ChildWrapper>
-                                </React.Fragment>
-                            )
-                                : null
-                        }
+                        const active = open.includes(parent.id)
+                        const { icon: Icon } = parent
+                        const activePath = location.pathname?.includes(parent.path);
+                        return !parent.hidden ? (
+                            <React.Fragment key={parent.id}>
+                                <MenuItem
+                                    onClick={(e) => onClickParent(e, parent)}
+                                    active={activePath.toString()}
+                                >
+                                    <MenuItem.Title active={activePath.toString()}>
+                                        <Icon className="icon" />
+                                        {parent.title}
+                                        {parent?.children ? <Arrow active={active.toString()} /> : ''}
+                                    </MenuItem.Title>
+                                </MenuItem>
+                                <ChildWrapper active={active.toString()}>
+                                    {
+                                        parent?.children?.map(child => (
+                                            <MenuItem
+                                                key={child.id}
+                                                to={child.path}
+                                                onClick={(e) => onClickChild(e,child.title,parent.title,child.path)}
+                                                active={(location.pathname === child.path).toString()}
+                                            >
+                                                <MenuItem.Title>
+                                                    {child.title}
+                                                </MenuItem.Title>
+                                            </MenuItem>
+                                        ))
+                                    }
+                                </ChildWrapper>
+                            </React.Fragment>
+                        )
+                            : null
 
                     })}
                 </Menu>

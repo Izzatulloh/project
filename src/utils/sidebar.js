@@ -6,7 +6,7 @@ import Groups from "../assets/icons/group.svg?react";
 import Course from "../assets/icons/course.svg?react";
 import HR from "../assets/icons/hr.svg?react";
 import Settings from "../assets/icons/setting.svg?react";
-import Generics from "../Components/Generics/Generics";
+import Generics from "../view/Generics";
 // Components
 import {AnalitikaView}  from "../view/AnalitikaView";
 // import FirstClassView from "../view/Lids/First";
@@ -80,7 +80,6 @@ const sidebar = [
     isPrivate: true,
     icon: Finance,
     element: Generics,
-    hidden: true,
     role: ["admin"],
   },
   {
