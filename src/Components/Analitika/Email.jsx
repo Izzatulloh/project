@@ -1,4 +1,4 @@
-import { email } from "../../mock/Email"
+import { email } from "../../mock/email"
 import Subtitle from "../Generics/Subtitle"
 import { Info, Section, Wrapper } from "./emailStyle"
 

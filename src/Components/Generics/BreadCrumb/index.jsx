@@ -6,13 +6,13 @@ import Subtitle from '../Subtitle'
 
 const BreadCrumb = () => {
     const location = useLocation()
-    return (
+    return location.pathname !== '/analitika' && (
         <Container title={location.state?.parent}>
             <Title>{location.state?.parent}</Title>
-            {location.state?.child && <Arrow/>}
+            {location.state?.child && <Arrow />}
             <Subtitle>{location.state?.child}</Subtitle>
         </Container>
-    )
+    ) 
 }
 
 export default BreadCrumb
