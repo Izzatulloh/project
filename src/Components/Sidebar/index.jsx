@@ -4,6 +4,7 @@ import Navbar from "../Navbar"
 import Profile from "./Profile"
 import sidebar from './../../utils/sidebar';
 import React, { useState } from "react";
+import BreadCrumb from "../Generics/BreadCrumb";
 
 const Sidebar = () => {
     const [open, setOpen] = useState([])
@@ -85,6 +86,7 @@ const Sidebar = () => {
             <Body>
                 <Navbar />
                 <Wrapper>
+                    <BreadCrumb/>
                     <Outlet />
                 </Wrapper>
             </Body>
