@@ -9,16 +9,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
+import GenericSelect from '../Select';
 
 
 
 
 function EnhancedTableHead(props) {
-    const { onSelectAllClick, numSelected, rowCount, onRequestSort, headCells } =
+    const { onSelectAllClick, numSelected, rowCount, headCells } =
         props;
-    // const createSortHandler = (property) => (event) => {
-    //     onRequestSort(event, property);
-    // };
+
 
     return (
         <TableHead>
@@ -46,7 +45,6 @@ function EnhancedTableHead(props) {
 
 EnhancedTableHead.propTypes = {
     numSelected: PropTypes.number.isRequired,
-    onRequestSort: PropTypes.func.isRequired,
     onSelectAllClick: PropTypes.func.isRequired,
     rowCount: PropTypes.number.isRequired,
     headCells: PropTypes.array.isRequired
@@ -82,17 +80,27 @@ export function GenericTable({ headCells, rows, open }) {
         }
         setSelected(newSelected);
     };
-
+    const data1 = [
+        { value: "uzbek", title: "Uzbek" },
+        { value: "english", title: "English" },
+        { value: "russian", title: "Russian" },
+    ]
 
     return (
         <Box sx={{ width: '100%' }}>
-            <Box sx={{ marginTop: "24px", height: open ? "64px" : 0 ,overflow:"hidden"}}>
+            <Box sx={{ marginTop: "24px", height: open ? "64px" : 0, overflow: "hidden" }}>
                 <Table>
                     <TableBody>
-                        <TableRow>
-                            <TableCell sx={{border:"none"}}>
-                                test
-                            </TableCell>
+                        <TableRow sx={{ display: "flex", justifyContent: "space-between" }}>
+                            {/* <TableCell sx={{ border: 0 }} align='start'>
+                                <GenericSelect data={data1} label="Status" />
+                            </TableCell> */}
+                            <GenericSelect data={data1} value="uzbek" />
+                            <GenericSelect data={data1} value="english" />
+                            <GenericSelect data={data1} value="russian" />
+                            <GenericSelect data={data1} />
+                            <GenericSelect data={data1} />
+                            <GenericSelect data={data1} />
                         </TableRow>
                     </TableBody>
                 </Table>
