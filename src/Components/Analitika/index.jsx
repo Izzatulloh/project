@@ -82,6 +82,7 @@ const Analitika = () => {
           <Moliya/>
         </FooterWrapper.Moliya>
       </FooterWrapper>
+   
     </Container >
   )
 }

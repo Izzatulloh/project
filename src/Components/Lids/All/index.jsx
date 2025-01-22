@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GenericTable from '../../Generics/Table'
 import { Container } from './style'
+import BreadCrumb from '../../Generics/BreadCrumb'
+import GenericButton from './../../Generics/Button/index';
 
 const AllLids = () => {
+    const [open, setOpen] = useState(false)
     const headCells = [
         {
             id: 'name',
@@ -24,7 +27,7 @@ const AllLids = () => {
             id: 'admin',
             label: 'Moderator',
         },
-      
+
     ]
     const rows = [
         {
@@ -63,7 +66,13 @@ const AllLids = () => {
     ]
     return (
         <Container>
-            <GenericTable headCells={headCells} rows={rows} />
+            <BreadCrumb >
+                <GenericButton type="import" onClick={() => setOpen(!open)}>Import</GenericButton>
+                <GenericButton type="filter" onClick={() => setOpen(!open)}>Filter</GenericButton>
+                <GenericButton type="add" onClick={() => setOpen(!open)}>Buyurtma qo’shish</GenericButton>
+            </BreadCrumb>
+
+            <GenericTable open={open} headCells={headCells} rows={rows} />
         </Container>
     )
 }
