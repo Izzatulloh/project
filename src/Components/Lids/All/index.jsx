@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 import GenericTable from '../../Generics/Table'
-import { Container } from './style'
+import { Action, Container } from './style'
 import BreadCrumb from '../../Generics/BreadCrumb'
 import GenericButton from './../../Generics/Button/index';
 
 const AllLids = () => {
     const [open, setOpen] = useState(false)
+    const onEdit = (e) => {
+        e.stopPropagation()
+        console.log('edit');
+    }
+    const onMove = (e) => {
+        e.stopPropagation()
+        console.log('move');
+    }
     const headCells = [
         {
             id: 'name',
@@ -26,6 +34,16 @@ const AllLids = () => {
         {
             id: 'admin',
             label: 'Moderator',
+        },
+        {
+            id: 'action',
+            label: '',
+            render: (
+                <Action >
+                    <Action.Edit onClick={onEdit} />
+                    <Action.Move onClick={onMove} />
+                </Action>
+            )
         },
 
     ]

@@ -92,9 +92,7 @@ export function GenericTable({ headCells, rows, open }) {
                 <Table>
                     <TableBody>
                         <TableRow sx={{ display: "flex", justifyContent: "space-between" }}>
-                            {/* <TableCell sx={{ border: 0 }} align='start'>
-                                <GenericSelect data={data1} label="Status" />
-                            </TableCell> */}
+
                             <GenericSelect data={data1} value="uzbek" />
                             <GenericSelect data={data1} value="english" />
                             <GenericSelect data={data1} value="russian" />
@@ -145,7 +143,11 @@ export function GenericTable({ headCells, rows, open }) {
                                         {
                                             headCells.map((val) => {
                                                 return (
-                                                    <TableCell key={val.id} sx={{ color: "#253E5F" }}>{row[val.id]}</TableCell>
+                                                    <TableCell
+                                                        key={val.id}
+                                                        sx={{ color: "#253E5F" }}
+                                                    >{val.render ? val.render : row[val.id]}
+                                                    </TableCell>
                                                 )
                                             })
                                         }
